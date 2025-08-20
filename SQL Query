@@ -1,0 +1,33 @@
+CREATE TABLE sales (
+    OrderID INT PRIMARY KEY,
+    SKU VARCHAR(10),
+    Date DATE,
+    Units_Sold INT,
+    Store_ID VARCHAR(10)
+);
+
+CREATE TABLE inventory (
+    SKU VARCHAR(10) PRIMARY KEY,
+    Stock_On_Hand INT,
+    Reorder_Level INT,
+    Lead_Time_Days INT
+);
+
+CREATE TABLE supplier (
+    SKU VARCHAR(10) PRIMARY KEY,
+    Supplier_ID VARCHAR(10),
+    Cost_Per_Unit FLOAT,
+    Delivery_Time_Days INT
+WITH SKU_Sales AS (
+    SELECT SKU, SUM(Units_Sold) AS Total_Sold
+    FROM sales
+    GROUP BY SKU
+)
+SELECT SKU, Total_Sold,
+CASE
+    WHEN Total_Sold >= (SELECT SUM(Total_Sold)*0.7 FROM SKU_Sales) THEN 'A'
+    WHEN Total_Sold >= (SELECT SUM(Total_Sold)*0.9 FROM SKU_Sales) THEN 'B'
+    ELSE 'C'
+END AS ABC_Class
+FROM SKU_Sales
+ORDER BY Total_Sold DESC;
