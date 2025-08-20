@@ -1,0 +1,53 @@
+1. Demand Variability (Top 5 SKUs)
+
+SKUs with highest variability (Coefficient of Variation):
+
+SKU045: CV ≈ 0.29
+
+SKU007: CV ≈ 0.29
+
+SKU003: CV ≈ 0.29
+
+SKU008: CV ≈ 0.29
+
+SKU064: CV ≈ 0.29
+
+Insight: These SKUs have unpredictable weekly sales and require higher safety stock to avoid stock-outs.
+
+2. Safety Stock Analysis
+
+Calculated using 95% service level (Z=1.65) and weekly demand variability.
+
+Example:
+
+SKU100 safety stock ≈ 420 units
+
+SKU017 safety stock ≈ 401 units
+
+Insight: Safety stock ensures availability even during demand fluctuations and lead time variability.
+
+3. ABC Classification
+
+Categorized SKUs based on average weekly sales:
+
+Category A: Top ~70% cumulative sales
+
+Category B: Next ~20%
+
+Category C: Remaining ~10%
+
+Example: Top 10 SKUs (SKU025, SKU092, SKU029…) are Category A, driving most of the revenue.
+
+Insight: Focus inventory management and replenishment efforts on Category A SKUs for maximum business impact.
+
+4. Stock vs Reorder Point
+
+Scatter plot shows current stock levels vs calculated reorder points.
+
+Insight:
+
+-SKUs below the red line → need urgent replenishment
+
+-SKUs above the line → may be overstocked
+
+-This allows proactive inventory adjustments to reduce stock-outs and overstocking.
